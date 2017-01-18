@@ -1,0 +1,70 @@
+Format for input.txt:
+<N>
+<MODE>
+<YOUPLAY>
+<DEPTH>
+<… CELL VALUES …>
+<… BOARD STATE …>
+where
+<N> is the board width and height, e.g., N=5 for the 5x5 board shown in the figures above. N is an integer
+strictly greater than 0 and smaller than or equal to 26.
+<MODE> is “MINIMAX” or “ALPHABETA” or “COMPETITION”.
+<YOUPLAY> is either “X” or “O” and is the player which you will play on this turn.
+<DEPTH> is the depth of your search. By convention, the root of the search tree is at depth 0. DEPTH will
+always be larger than or equal to 1.
+<… CELL VALUES …> contains N lines with, in each line, N positive integer numbers each separated by a single
+space. These numbers represent the value of each location.
+<… BOARD STATE …> contains N lines, each with N characters “X” or ”O” or “.” to represent the state of each
+cell as occupied by X, occupied by O, or free.
+
+Format for output.txt:
+<MOVE> <MOVETYPE>
+<… NEXT BOARD STATE …>
+where
+<MOVE> is your move. As in the figures above, we use capital letters for column and numbers for rows. An
+example move is “F22” (remember that N is from 1 to 26, see above).
+<MOVETYPE> is “Stake” or “Raid” and is the type of move that your <MOVE> is.
+<… NEXT BOARD STATE …> a description of the new board state after you have played your move. Same
+format as <… BOARD STATE …> in input.txt above.
+
+Example 1:
+For this input.txt:
+3
+MINIMAX
+O
+2
+1 8 23
+5 42 12
+26 30 9
+X..
+...
+...
+your output.txt should be:
+B3 Stake
+X..
+...
+.O.
+
+Example 2: using the board state from Figure 3 (left) as the starting configuration for input.txt with minimax
+search depth = 1,
+5
+MINIMAX
+X
+1
+20 16 1 32 30
+20 12 2 11 8
+28 48 9 1 1
+20 12 10 6 2
+25 30 23 21 10
+..XX.
+..XOX
+...O.
+..OO.
+.....
+The output produced is:
+B3 Stake
+..XX.
+..XOX
+.X.O.
+..OO.
+.....
